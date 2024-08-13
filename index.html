@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Save Coins Count</title>
+</head>
+<body>
+<h1>Coins Count: <span id="coinsCount">0</span></h1>
+<button onclick="increaseCoins()">Increase Coin Count</button>
+
+<script>
+// بررسی آیا تعداد کوین‌ها در localStorage ذخیره شده است
+if(localStorage.getItem('coinsCount')) {
+    // اگر تعداد کوین‌ها در localStorage وجود داشته باشد، آن را بارگیری کنید
+    document.getElementById('coinsCount').innerText = localStorage.getItem('coinsCount');
+} else {
+    // اگر تعداد کوین‌ها در localStorage وجود نداشته باشد، تعداد اولیه را ذخیره کنید
+    localStorage.setItem('coinsCount', 0);
+}
+
+// تابع برای افزایش تعداد کوین‌ها
+function increaseCoins() {
+    let currentCount = parseInt(localStorage.getItem('coinsCount'));
+    currentCount++;
+    localStorage.setItem('coinsCount', currentCount);
+    document.getElementById('coinsCount').innerText = currentCount;
+}
+</script>
+</body>
+</html>
